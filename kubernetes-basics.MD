@@ -11,6 +11,8 @@
 
   1) The Control Plane coordinates the cluster
   2) Nodes are the workers that run applications
+
+  ![Alt text](/module_01_cluster.svg)
   
   The Control Plane is responsible for managing the cluster. 
   The Control Plane coordinates all activities in your cluster, such as scheduling applications, 
