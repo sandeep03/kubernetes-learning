@@ -50,6 +50,47 @@
   To view the cluster details - kubectl cluster-info
 
   To view the nodes in the cluster - kubectl get nodes
+  
+  # Deploy an app
+  Kubernetes Deployments
+  
+  Once you have a running Kubernetes cluster, you can deploy your containerized applications on top of it. To do so, you   create a Kubernetes Deployment configuration. The Deployment instructs Kubernetes how to create and update instances   of your application. Once you've created a Deployment, the Kubernetes control plane schedules the application           instances included in that Deployment to run on individual Nodes in the cluster.
+
+Once the application instances are created, a Kubernetes Deployment Controller continuously monitors those instances. If the Node hosting an instance goes down or is deleted, the Deployment controller replaces the instance with an instance on another Node in the cluster. This provides a self-healing mechanism to address machine failure or maintenance.
+  
+  # Deploying your first app on Kubernetes
+  
+   ![Alt text](/module_02_first_app.svg)
+   
+   You can create and manage a Deployment by using the Kubernetes command line interface, **Kubectl** Kubectl uses the Kubernetes API to interact with the cluster. In this module, you'll learn the most common Kubectl commands needed to create Deployments that run your applications on a Kubernetes cluster.
+
+When you create a Deployment, you'll need to specify the container image for your application and the number of replicas that you want to run.
+
+For your first Deployment, you'll use a hello-node application packaged in a Docker container that uses NGINX to echo back all the requests. 
+  
+  # Commands:
+  
+  kubectl version
+  
+  kubectl get nodes --help
+  
+  deploy our first app on Kubernetes with the following:
+  
+  kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
+
+  kubectl get deployments
+
+  Kubernetes cluster will be created but it will not be accessible to external world it can be done by creating proxy
+  
+  kubectl proxy
+
+  check access to cluster
+  curl http://localhost:8001/version
+
+
+
+
 
   
   
+  kubectl get nodes
