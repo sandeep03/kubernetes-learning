@@ -38,3 +38,16 @@
   The Minikube CLI provides basic bootstrapping operations for 
   working with your cluster, including start, stop, status, and delete. 
   
+  # Commands:
+  Check minikube installation by running - minikube version
+
+  Start the cluster, by running - minikube start
+  
+  Check kubectl installation by running - kubectl version
+
+  To view the cluster details - kubectl cluster-info
+
+  To view the nodes in the cluster - kubectl get nodes
+
+  
+  
