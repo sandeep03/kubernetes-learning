@@ -91,6 +91,8 @@ For your first Deployment, you'll use a hello-node application packaged in a Doc
 
 Kubernetes Pods
 
+![Alt text](/module_03_pods.svg)
+
 A Pod is a Kubernetes abstraction that represents a group of one or more application containers (such as Docker), and some shared resources for those containers. Those resources include:
 
 Shared storage, as Volumes
@@ -105,11 +107,29 @@ A Pod always runs on a Node. A Node is a worker machine in Kubernetes and may be
 
 Every Kubernetes Node runs at least:
 
+![Alt text](/module_03_nodes.svg)
+
 Kubelet, a process responsible for communication between the Kubernetes control plane and the Node; it manages the Pods and the containers running on a machine.
 A container runtime (like Docker) responsible for pulling the container image from a registry, unpacking the container, and running the application.
 
-Troubleshooting with kubectl
+# Commands:
+
 kubectl get - list resources
+
 kubectl describe - show detailed information about a resource
+
+To get the Pod name and store it in the POD_NAME environment variable:
+
+export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+
+echo Name of the Pod: $POD_NAME
+
+To see the output of our application, run a curl request.
+
+curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/
+
 kubectl logs - print the logs from a container in a pod
-kubectl exec - execute a command on a container in a pod
+
+Next let’s start a bash session in the Pod’s container:
+
+kubectl exec -ti $POD_NAME -- bash
